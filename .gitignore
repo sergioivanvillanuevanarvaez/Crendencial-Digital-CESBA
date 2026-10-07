@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿.idea/
 *.iml
 .gradle/
@@ -7,4 +8,26 @@ local.properties
 *.apk
 *.aab
 *.log
+=======
+﻿# Android Studio
+.idea/
+*.iml
+
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Local configuration
+local.properties
+
+# APK
+*.apk
+*.aab
+
+# Logs
+*.log
+
+# Windows
+>>>>>>> a204875adf1d2c0ba8cb0ad6774eb50f7c2b0b4b
 Thumbs.db

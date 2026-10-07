@@ -52,7 +52,11 @@ public class MainActivity extends AppCompatActivity {
     File fotoFile;
     boolean frenteVisible = true, girando = false;
     OnBackPressedCallback atrasCallback;
+<<<<<<< HEAD
     static final int FOTO = 101, CAMERA = 102, TXT = 103;
+=======
+    static final int FOTO = 101, CAMERA = 102;
+>>>>>>> a204875adf1d2c0ba8cb0ad6774eb50f7c2b0b4b
 
     String[] carreras = {"Selecciona tu carrera", "Administración", "Arquitectura", "Comercio Internacional", "Contaduría Pública", "Contaduría y Finanzas", "Criminología", "Derecho", "Diseño y Comunicación Audiovisual", "Enfermería", "Fisioterapia", "Ingeniería Industrial", "Mercadotecnia y Negocios", "Nutrición", "Pedagogía", "Psicología", "Ingeniería en Sistemas"};
     String[] tipos = {"Alumno", "Docente", "Administrativo"};
@@ -109,7 +113,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnNueva).setOnClickListener(v->{limpiarFormulario(); showForm();});
         findViewById(R.id.btnValidar).setOnClickListener(v->validar());
         findViewById(R.id.btnVoltear).setOnClickListener(v->voltear());
+<<<<<<< HEAD
         findViewById(R.id.btnTxt).setOnClickListener(v->guardarTxt());
+=======
+>>>>>>> a204875adf1d2c0ba8cb0ad6774eb50f7c2b0b4b
         flipContainer.setOnClickListener(v->voltear());
         findViewById(R.id.btnAtrasForm).setOnClickListener(v->atras());
         findViewById(R.id.btnAtrasCred).setOnClickListener(v->atras());
@@ -153,10 +160,13 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override protected void onActivityResult(int req,int result,@Nullable Intent data){
         super.onActivityResult(req,result,data);
+<<<<<<< HEAD
         if(req==TXT){
             if(result==Activity.RESULT_OK && data!=null && data.getData()!=null) escribirTxt(data.getData());
             return;
         }
+=======
+>>>>>>> a204875adf1d2c0ba8cb0ad6774eb50f7c2b0b4b
         if(req==FOTO && result==Activity.RESULT_OK && fotoFile!=null && fotoFile.exists()){
             Bitmap bmp=cargarFoto(fotoFile);
             if(bmp!=null){ foto=bmp; fotoListo(); btnFoto.setText("Volver a tomar foto"); }
@@ -214,8 +224,12 @@ public class MainActivity extends AppCompatActivity {
         cardCredencial.setBackground(gradient(color)); cardReverso.setBackground(gradient(color));
         imgCredencial.setImageBitmap(foto);
         payload="CESBA|NOMBRE="+nombre+"|MATRICULA="+matricula+"|CARRERA="+carrera+"|SEMESTRE="+sem+"|GRUPO="+grupo+"|CORREO="+correo+"|TIPO="+tipo;
+<<<<<<< HEAD
         qrBitmap=qr(payload);
         android.graphics.drawable.BitmapDrawable qd=new android.graphics.drawable.BitmapDrawable(getResources(),qrBitmap); qd.setFilterBitmap(false); imgQR.setImageDrawable(qd);
+=======
+        qrBitmap=qr(payload); imgQR.setImageBitmap(qrBitmap);
+>>>>>>> a204875adf1d2c0ba8cb0ad6774eb50f7c2b0b4b
 
         frenteVisible=true; girando=false;
         cardCredencial.setVisibility(View.VISIBLE); cardCredencial.setRotationY(0f); cardReverso.setVisibility(View.INVISIBLE); cardReverso.setRotationY(0f);
@@ -253,6 +267,7 @@ public class MainActivity extends AppCompatActivity {
         switch(c){case "Administración":return Color.rgb(242,140,40);case "Arquitectura":return Color.rgb(128,128,128);case "Comercio Internacional":return Color.rgb(214,40,40);case "Contaduría Pública":return Color.rgb(185,28,28);case "Contaduría y Finanzas":return Color.rgb(232,93,158);case "Criminología":return Color.rgb(244,196,48);case "Derecho":return Color.rgb(229,161,26);case "Diseño y Comunicación Audiovisual":return Color.rgb(247,168,196);case "Enfermería":return Color.rgb(125,188,232);case "Fisioterapia":return Color.rgb(23,105,170);case "Ingeniería Industrial":return Color.rgb(53,168,83);case "Mercadotecnia y Negocios":return Color.rgb(193,18,31);case "Nutrición":return Color.rgb(242,140,40);case "Pedagogía":return Color.rgb(111,168,220);case "Psicología":return Color.rgb(121,85,72);case "Ingeniería en Sistemas":return Color.rgb(123,44,191);default:return violeta;}}
 
     // ---------- QR ----------
+<<<<<<< HEAD
     Bitmap qr(String text){
         try{
             Map<com.google.zxing.EncodeHintType,Object> hints=new HashMap<>();
@@ -268,6 +283,9 @@ public class MainActivity extends AppCompatActivity {
             return b;
         }catch(WriterException e){ return null; }
     }
+=======
+    Bitmap qr(String text){int size=650; try{BitMatrix m=new QRCodeWriter().encode(text,BarcodeFormat.QR_CODE,size,size); Bitmap b=Bitmap.createBitmap(size,size,Bitmap.Config.RGB_565); for(int x=0;x<size;x++)for(int y=0;y<size;y++)b.setPixel(x,y,m.get(x,y)?Color.BLACK:Color.WHITE);return b;}catch(WriterException e){return null;}}
+>>>>>>> a204875adf1d2c0ba8cb0ad6774eb50f7c2b0b4b
 
     String leerQR(Bitmap b){
         try{
@@ -277,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
         }catch(Exception e){ return null; }
     }
 
+<<<<<<< HEAD
     // ---------- Guardar como .txt ----------
     String contenidoTxt(){
         String sep="----------------------------------------\n";
@@ -307,6 +326,8 @@ public class MainActivity extends AppCompatActivity {
         }catch(Exception e){ Toast.makeText(this,"No se pudo guardar el archivo",Toast.LENGTH_SHORT).show(); }
     }
 
+=======
+>>>>>>> a204875adf1d2c0ba8cb0ad6774eb50f7c2b0b4b
     // ---------- Validación de datos ----------
     void validar(){
         String leido=qrBitmap!=null?leerQR(qrBitmap):null;
